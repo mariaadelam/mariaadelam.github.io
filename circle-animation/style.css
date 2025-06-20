@@ -1,0 +1,69 @@
+body {
+  padding: 0;
+  margin: 0;
+  background: #050210;
+}
+.ring-outer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.ring {
+  width: 500px;
+  height: 500px;
+  background: black;
+  position: relative;
+  border-radius: 50%;
+}
+.ring:before, .ring:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #fb5dad, #55fb9f, #b97aff);
+  transform: scale(1.2);
+  z-index: -2;
+  animation: animate 0.5s linear infinite;  
+}
+.ring:after {
+filter: blur(70px);
+z-index: -1;
+}
+
+.inner-ring {
+position: absolute;
+top: 50%;
+left: 50%;
+width: 0;
+height: 0;
+background: rgba(255, 255, 255, 0.3);
+border-radius: 50%;
+transform: translate(-50%, -50%);
+animation: grow 1s ease-out infinite;
+}
+
+@keyframes animate {
+0% {
+  transform: rotate(0) scale(1.2);
+}
+100% {
+  transform: rotate(360deg) scale(1.2);
+}
+}
+
+@keyframes grow {
+0% {
+  width: 0;
+  height: 0;
+  opacity: 0.6;
+}
+100% {
+  width: 500px;
+  height: 500px;
+  opacity: 0;
+}
+}
